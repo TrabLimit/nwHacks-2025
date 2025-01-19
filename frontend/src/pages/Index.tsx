@@ -6,37 +6,37 @@ const workoutImages = [
     id: "1",
     title: "Fat Burn",
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000",
+      "public/yoga.jpg",
   },
   {
     id: "2",
     title: "Lean and Sweaty",
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000",
+      "public/shadow.jpg",
   },
   {
     id: "3",
     title: "Strength Surge",
     image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000",
+      "public/dance.jpg",
   },
   {
     id: "4",
     title: "Core Crusher",
     image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000",
+      "public/sit.jpg",
   },
   {
     id: "5",
     title: "HIIT It Hard",
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000",
+      "public/hit.jpg",
   },
   {
     id: "6",
     title: "Strength and Stability",
     image:
-      "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000",
+      "public/balance.jpg",
   },
 ];
 
@@ -54,7 +54,7 @@ const songSelection = [
     id: "1",
     artist: "Charli XCX",
     song: "Brat",
-    image: "/public/brat.jpg",
+    image: "../public/brat.jpg",
   },
   {
     id: "2",
