@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { Link } from "react-router-dom";
 
 const workoutImages = [
   {
@@ -101,9 +102,12 @@ const Index = () => {
               physical therapy, bringing energy and fun to your recovery
               journey.
             </p>
-            <button className="bg-[#ff5722] text-white px-8 py-4 text-lg rounded-lg font-semibold shadow-lg hover:bg-[#e64a19] transition-transform transform hover:scale-105">
+            <Link
+              to="/pose-detector"
+              className="bg-[#ff5722] text-white px-8 py-4 text-lg rounded-lg font-semibold shadow-lg hover:bg-[#e64a19] transition-transform transform hover:scale-105 inline-block"
+            >
               Try NOW
-            </button>
+            </Link>
           </div>
         </div>
       </header>
