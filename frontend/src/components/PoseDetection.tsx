@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import { toast } from '@/components/ui/use-toast';
+
 const PoseDetection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,7 +26,7 @@ const PoseDetection = () => {
               setIsLoading(false);
               detectPose();
             };
-        }
+          }
         }
       } catch (error) {
         console.error('Error initializing pose detection:', error);
@@ -37,7 +38,7 @@ const PoseDetection = () => {
       }
     };
     const detectPose = async () => {
-    console.log('hey');
+      console.log('hey');
       if (!detector || !videoRef.current || !canvasRef.current) return;
       const video = videoRef.current;
       const canvas = canvasRef.current;
@@ -95,8 +96,8 @@ const PoseDetection = () => {
       connections.forEach(([p1, p2]) => {
         const point1 = keypoints.find((kp) => kp.name === p1);
         const point2 = keypoints.find((kp) => kp.name === p2);
-        if (point1 && point2 && point1.score && point2.score && 
-            point1.score > 0.3 && point2.score > 0.3) {
+        if (point1 && point2 && point1.score && point2.score &&
+          point1.score > 0.3 && point2.score > 0.3) {
           ctx.beginPath();
           ctx.moveTo(point1.x, point1.y);
           ctx.lineTo(point2.x, point2.y);
@@ -176,16 +177,16 @@ const PoseDetection = () => {
           </div>
         </div>
       )}
-      <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+      <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
         <video
           ref={videoRef}
           autoPlay
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full object-cover"
         />
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 h-full"
           width={640}
           height={480}
         />

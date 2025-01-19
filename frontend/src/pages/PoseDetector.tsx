@@ -1,9 +1,9 @@
 import PoseDetection from "@/components/PoseDetection"
 
 const PoseDetector = () => {
-    return(
+    return (
         <div>
-        <PoseDetection />
+            <PoseDetection />
         </div>
     )
 }

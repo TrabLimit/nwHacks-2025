@@ -78,6 +78,9 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "card-hover": "card-hover 0.3s ease-out forwards",
       },
+      aspectRatio: {
+        '4/3': '4 / 3',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
