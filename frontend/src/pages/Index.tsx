@@ -47,25 +47,32 @@ const songSelection = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6]">
       <Navigation />
       <main className="container mx-auto pt-24 page-transition">
-        <h1 className="text-5xl font-bold text-center mb-12">
+        <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
           Discover Your Fitness Journey
         </h1>
         <div className="space-y-16">
           {/* Workout Selection */}
           <section>
-            <h2 className="text-3xl font-semibold text-center mb-8">Workout Selection →</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31] flex items-center justify-center gap-2">
+              <span>Workout Selection</span> <span className="text-2xl text-[#5a3d31]"></span>
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {workoutImages.map((workout) => (
-                <div key={workout.id} className="text-center">
+                <div
+                  key={workout.id}
+                  className="text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                >
                   <img
                     src={workout.image}
                     alt={workout.title}
-                    className="w-full h-48 object-cover rounded-lg"
+                    className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
-                  <p className="mt-4 text-lg font-medium">{workout.title}</p>
+                  <p className="mt-4 text-lg font-semibold text-gray-700">
+                    {workout.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -73,16 +80,23 @@ const Index = () => {
 
           {/* Exercise Selection */}
           <section>
-            <h2 className="text-3xl font-semibold text-center mb-8">Exercise Selection →</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31] flex items-center justify-center gap-2">
+              <span>Exercise Selection</span> <span className="text-2xl"></span>
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {exerciseImages.map((exercise) => (
-                <div key={exercise.id} className="text-center">
+                <div
+                  key={exercise.id}
+                  className="text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                >
                   <img
                     src={exercise.image}
                     alt={exercise.title}
-                    className="w-full h-48 object-cover rounded-lg"
+                    className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
-                  <p className="mt-4 text-lg font-medium">{exercise.title}</p>
+                  <p className="mt-4 text-lg font-semibold text-gray-700">
+                    {exercise.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -90,17 +104,22 @@ const Index = () => {
 
           {/* Song Selection */}
           <section>
-            <h2 className="text-3xl font-semibold text-center mb-8">Song Selection →</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31] flex items-center justify-center gap-2">
+              <span>Song Selection</span> <span className="text-2xl"></span>
+            </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
               {songSelection.map((song) => (
-                <div key={song.id} className="text-center p-4 border rounded-lg">
+                <div
+                  key={song.id}
+                  className="text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                >
                   <img
                     src={song.image}
                     alt={`${song.artist} - ${song.song}`}
                     className="w-full h-36 object-cover rounded-lg mb-4"
                   />
-                  <p className="font-semibold text-lg">{song.artist}</p>
-                  <p className="text-sm">{song.song}</p>
+                  <p className="font-bold text-lg text-gray-800">{song.artist}</p>
+                  <p className="text-sm text-gray-600">{song.song}</p>
                 </div>
               ))}
             </div>

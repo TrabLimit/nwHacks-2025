@@ -28,6 +28,16 @@ export const Navigation = () => {
           >
             Categories
           </Link>
+          <Link
+            to="/workout"
+            className={`transition-colors hover:text-primary ${
+              location.pathname === "/workout"
+                ? "text-primary"
+                : "text-muted-foreground"
+            }`}
+          >
+            Workout
+          </Link>
         </div>
       </div>
     </nav>
