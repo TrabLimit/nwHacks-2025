@@ -1,12 +1,42 @@
 import { Navigation } from "@/components/Navigation";
 
 const workoutImages = [
-  { id: "1", title: "Fat Burn", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-  { id: "2", title: "Lean and Sweaty", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-  { id: "3", title: "Strength Surge", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
-  { id: "4", title: "Core Crusher", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
-  { id: "5", title: "HIIT It Hard", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-  { id: "6", title: "Strength and Stability", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
+  {
+    id: "1",
+    title: "Fat Burn",
+    image:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000",
+  },
+  {
+    id: "2",
+    title: "Lean and Sweaty",
+    image:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000",
+  },
+  {
+    id: "3",
+    title: "Strength Surge",
+    image:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000",
+  },
+  {
+    id: "4",
+    title: "Core Crusher",
+    image:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000",
+  },
+  {
+    id: "5",
+    title: "HIIT It Hard",
+    image:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000",
+  },
+  {
+    id: "6",
+    title: "Strength and Stability",
+    image:
+      "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000",
+  },
 ];
 
 const exerciseImages = [
@@ -51,27 +81,28 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <header className="relative bg-blue-100 py-16">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center lg:items-start">
+      <header className="relative bg-blue-100 py-20">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center text-center lg:text-left">
           {/* Image Section */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <img
               src="public/hip2.jpg"
-              alt="Tailored Suit"
-              className="rounded-lg shadow-lg max-w-full"
+              alt="Hip Logo"
+              className="rounded-lg shadow-2xl max-w-full lg:max-w-lg"
             />
           </div>
           {/* Text Section */}
-          <div className="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12 text-center lg:text-left">
-            <h2 className="text-4xl font-bold text-[#5a3d31] mb-4">
-              The Tailor Is In
-            </h2>
-            <p className="text-lg text-gray-700 mb-6">
-              The ultimate custom menswear experience is now open in <strong>Chinook Centre</strong>.
-              Visit us by April 30 to be entered in a draw for a perfectly tailored wardrobe.
+          <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-12">
+            <h1 className="text-5xl font-extrabold text-[#5a3d31] leading-tight mb-6">
+              Say Hi to PT
+            </h1>
+            <p className="text-xl text-gray-700 leading-relaxed mb-8">
+              Come try <strong>HIPT</strong>. A fusion of Just Dance and
+              physical therapy, bringing energy and fun to your recovery
+              journey.
             </p>
-            <button className="bg-[#ff5722] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#e64a19] transition">
-              Book an Appointment
+            <button className="bg-[#ff5722] text-white px-8 py-4 text-lg rounded-lg font-semibold shadow-lg hover:bg-[#e64a19] transition-transform transform hover:scale-105">
+              Try NOW
             </button>
           </div>
         </div>
@@ -89,7 +120,9 @@ const Index = () => {
         <div className="space-y-16">
           {/* Workout Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">Workout Selection</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">
+              Workout Selection
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {workoutImages.map((workout) => (
                 <div
@@ -101,7 +134,9 @@ const Index = () => {
                     alt={workout.title}
                     className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
-                  <p className="mt-4 text-lg font-semibold text-gray-700">{workout.title}</p>
+                  <p className="mt-4 text-lg font-semibold text-gray-700">
+                    {workout.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -109,7 +144,9 @@ const Index = () => {
 
           {/* Exercise Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">Exercise Selection</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">
+              Exercise Selection
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {exerciseImages.map((exercise) => (
                 <div
@@ -121,7 +158,9 @@ const Index = () => {
                     alt={exercise.title}
                     className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
-                  <p className="mt-4 text-lg font-semibold text-gray-700">{exercise.title}</p>
+                  <p className="mt-4 text-lg font-semibold text-gray-700">
+                    {exercise.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -129,7 +168,9 @@ const Index = () => {
 
           {/* Song Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">Song Selection</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">
+              Song Selection
+            </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
               {songSelection.map((song) => (
                 <div
@@ -141,7 +182,9 @@ const Index = () => {
                     alt={`${song.artist} - ${song.song}`}
                     className="w-full h-36 object-cover rounded-lg mb-4"
                   />
-                  <p className="font-bold text-lg text-gray-800">{song.artist}</p>
+                  <p className="font-bold text-lg text-gray-800">
+                    {song.artist}
+                  </p>
                   <p className="text-sm text-gray-600">{song.song}</p>
                 </div>
               ))}
