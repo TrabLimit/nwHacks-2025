@@ -3,7 +3,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as poseDetection from "@tensorflow-models/pose-detection";
 import { toast } from "@/components/ui/use-toast";
 
-const PoseDetection = ({desiredExercises}: {desiredExercises?: string[]}) => {
+const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +63,7 @@ const PoseDetection = ({desiredExercises}: {desiredExercises?: string[]}) => {
           // 0.5 second buffer time between valid reps, to prevent false positives for detection of the neutral pose
           if (currentTime - lastUpdateTime < 500) return;
 
-          if (desiredExercises.includes(poseName) || desiredExercises === undefined) {          
+          if (desiredExercises.includes(poseName) || desiredExercises === undefined) {
             setRepCount((prevCount) => prevCount + 1);
             setLastUpdateTime(currentTime);
             activePoseDesired = false;
@@ -180,11 +180,11 @@ const PoseDetection = ({desiredExercises}: {desiredExercises?: string[]}) => {
       const rightKnee = keypoints.find(point => point.name === 'right_knee');
       const leftHip = keypoints.find(point => point.name === 'left_hip');
       const rightHip = keypoints.find(point => point.name === 'right_hip');
-    
+
       if (leftKnee && rightKnee && leftHip && rightHip) {
         const oneLegBent = Math.abs(leftKnee.y - leftHip.y) < 20 || Math.abs(rightKnee.y - rightHip.y) < 20;
         const otherLegExtended = Math.abs(leftKnee.y - leftHip.y) > 100 || Math.abs(rightKnee.y - rightHip.y) > 100;
-    
+
         return oneLegBent && otherLegExtended;
       }
       return false;
@@ -197,14 +197,14 @@ const PoseDetection = ({desiredExercises}: {desiredExercises?: string[]}) => {
       const rightKnee = keypoints.find(point => point.name === 'right_knee');
       const leftAnkle = keypoints.find(point => point.name === 'left_ankle');
       const rightAnkle = keypoints.find(point => point.name === 'right_ankle');
-    
+
       if (!leftHip || !rightHip || !leftKnee || !rightKnee || !leftAnkle || !rightAnkle) {
         return false;
       }
-    
+
       const isLeftLegRaised = leftKnee.y < leftHip.y && leftAnkle.y < leftHip.y;
       const isRightLegRaised = rightKnee.y < rightHip.y && rightAnkle.y < rightHip.y;
-    
+
       return isLeftLegRaised || isRightLegRaised;
     };
 
@@ -217,11 +217,11 @@ const PoseDetection = ({desiredExercises}: {desiredExercises?: string[]}) => {
       const rightWrist = keypoints.find((point) => point.name === "right_wrist");
       const leftHip = keypoints.find((point) => point.name === "left_hip");
       const rightHip = keypoints.find((point) => point.name === "right_hip");
-  
+
       if (leftShoulder && rightShoulder && leftElbow && rightElbow && leftWrist && rightWrist && leftHip && rightHip) {
         const armsRelaxed = leftWrist.y > leftElbow.y && rightWrist.y > rightElbow.y;
         const standingStraight = Math.abs(leftShoulder.y - rightShoulder.y) < 20 && Math.abs(leftHip.y - rightHip.y) < 20;
-  
+
         return armsRelaxed && standingStraight;
       }
       return false;

@@ -50,12 +50,12 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6]">
       <Navigation />
       <main className="container mx-auto pt-24 page-transition">
-      <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
-  <span className="font-bold text-[#ff5722]">H</span>ip 
-  <span className="font-bold text-[#ff5722]"> I</span>nteractive 
-  <span className="font-bold text-[#ff5722]"> P</span>hysical 
-  <span className="font-bold text-[#ff5722]"> T</span>herapy
-</h1>
+        <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
+          <span className="font-bold text-[#ff5722]">H</span>ip
+          <span className="font-bold text-[#ff5722]"> I</span>nteractive
+          <span className="font-bold text-[#ff5722]"> P</span>hysical
+          <span className="font-bold text-[#ff5722]"> T</span>herapy
+        </h1>
 
 
         <div className="space-y-16">
