@@ -71,9 +71,9 @@ const Index = () => {
           {/* Image Section */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <img
-              src="hipt_3.png"
+              src="gradientLogo.png"
               alt="Hip Logo"
-              className="rounded-lg shadow-lg max-w-full lg:max-w-lg"
+              className="rounded-lg lg:max-w-lg"
             />
           </div>
           {/* Text Section */}
