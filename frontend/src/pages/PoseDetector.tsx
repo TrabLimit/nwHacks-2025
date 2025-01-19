@@ -1,9 +1,13 @@
 import { Navigation } from "@/components/Navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PoseDetection from "@/components/PoseDetection"; // Assuming PoseDetection is a component
+import { useParams } from "react-router-dom";
+import { WorkoutContext } from "@/App";
 
 const PoseDetector = () => {
   const [timeLeft, setTimeLeft] = useState(60);
+  const { id } = useParams();
+  const workouts = useContext(WorkoutContext);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -13,7 +17,7 @@ const PoseDetector = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6] flex flex-col items-center relative">
+    <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6] flex flex-col items-center relative pb-10">
       <Navigation />
       {/*
       <div className="fixed top-4 right-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
@@ -32,11 +36,8 @@ const PoseDetector = () => {
           <h1 className="text-4xl font-extrabold text-[#5a3d31] tracking-tighter">
             Pose Detection
           </h1>
-          <div
-            className="mx-auto bg-transparent rounded-lg overflow-hidden"
-            style={{ maxWidth: "640px" }}
-          >
-            <PoseDetection desiredExercises={["T-pose", "Squat pose"]}/>
+          <div className="mx-auto bg-transparent rounded-lg overflow-hidden" style={{ maxWidth: "640px" }}>
+            <PoseDetection desiredExercises={id ? workouts[id]["exercises"] : ["T-pose", "Squat pose"]} />
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-xl mx-auto">

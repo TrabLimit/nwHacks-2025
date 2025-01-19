@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
 // Schema for a workout that a user will complete
 const workoutSchema = new mongoose.Schema({
     _id: mongoose.Types.UUID,
-    name: { type: String, required: true },
+    title: { type: String, required: true },
     description: { type: String, required: true },
     muscleGroups: [{ type: String }],
     exercises: [{ type: String }],

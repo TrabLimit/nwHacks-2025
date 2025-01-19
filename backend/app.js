@@ -12,7 +12,8 @@ app.use(express.urlencoded({extended: true}));
 
 // Object to store allowed sites for CORS
 const cors = {
-    origins: ["http://localhost:5173"],
+    origins: ["http://localhost:8080", "http://localhost:3000", "http://localhost:5173"],
+    default: "http://localhost:8080"
 }
 
 // CORS middleware adapted from https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue

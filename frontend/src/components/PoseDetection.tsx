@@ -7,6 +7,7 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isWorkoutActive, setIsWorkoutActive] = useState(false);
   const [repCount, setRepCount] = useState(0);
   const [lastUpdateTime, setLastUpdateTime] = useState<number>(0);
   let activePoseDesired: boolean = true;
@@ -256,6 +257,22 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
         <div className="text-center">
           <span className="text-sm font-medium text-gray-500">Reps</span>
           <div className="text-3xl font-bold text-primary">{repCount}</div>
+          {/* <div className="mt-4 flex justify-center space-x-4">
+            <button
+              onClick={() => setIsWorkoutActive(true)}
+              className="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600"
+              disabled={isWorkoutActive}
+            >
+              Start Workout
+            </button>
+            <button
+              onClick={() => setIsWorkoutActive(false)}
+              className="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600"
+              disabled={!isWorkoutActive}
+            >
+              Stop Workout
+            </button>
+          </div> */}
         </div>
       </div>
     </div>

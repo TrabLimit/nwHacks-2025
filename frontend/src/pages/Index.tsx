@@ -1,13 +1,7 @@
+import { WorkoutContext } from "@/App";
 import { Navigation } from "@/components/Navigation";
-
-const workoutImages = [
-  { id: "1", title: "Fat Burn", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-  { id: "2", title: "Lean and Sweaty", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-  { id: "3", title: "Strength Surge", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
-  { id: "4", title: "Core Crusher", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
-  { id: "5", title: "HIIT It Hard", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-  { id: "6", title: "Strength and Stability", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
-];
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const exerciseImages = [
   { id: "1", title: "Rear Lunges", image: "public/lunge.jpg" },
@@ -23,40 +17,42 @@ const songSelection = [
     id: "1",
     artist: "Charli XCX",
     song: "Brat",
-    image: "/public/brat.jpg",
+    image: "/brat.jpg",
   },
   {
     id: "2",
     artist: "Post Malone",
     song: "Beerbongs and Bentleys",
-    image: "/public/post.jpg",
+    image: "/post.jpg",
   },
   {
     id: "3",
     artist: "Sabrina Carpenter",
     song: "Short and Sweet",
-    image: "/public/sabrina.jpg",
+    image: "/sabrina.jpg",
   },
   {
     id: "4",
     artist: "Metro Boomin",
     song: "Without Warning",
-    image: "/public/metro.jpg",
+    image: "/metro.jpg",
   },
 ];
 
 const Index = () => {
+  const workouts = useContext(WorkoutContext);
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6]">
+    <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6] pb-10">
       <Navigation />
       <main className="container mx-auto pt-24 page-transition">
         <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
           <span className="font-bold text-[#ff5722]">H</span>ip
           <span className="font-bold text-[#ff5722]"> I</span>nteractive
-          <span className="font-bold text-[#ff5722]"> P</span>hysical
+          <span className="fontconst workouts = useContext(WorkoutContext);-bold text-[#ff5722]"> P</span>hysical
           <span className="font-bold text-[#ff5722]"> T</span>herapy
         </h1>
-
 
         <div className="space-y-16">
           {/* Workout Selection */}
@@ -65,13 +61,14 @@ const Index = () => {
               <span>Workout Selection</span> <span className="text-2xl text-[#5a3d31]"></span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {workoutImages.map((workout) => (
+              {workouts.map((workout, index) => (
                 <div
-                  key={workout.id}
+                  key={index}
                   className="text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                  onClick={() => navigate("/pose-detector/" + index)}
                 >
                   <img
-                    src={workout.image}
+                    src={workout.imageURL}
                     alt={workout.title}
                     className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
