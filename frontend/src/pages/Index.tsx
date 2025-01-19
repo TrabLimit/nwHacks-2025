@@ -5,38 +5,38 @@ const workoutImages = [
   {
     id: "1",
     title: "Fat Burn",
-    image:
-      "public/yoga.jpg",
+    image: "public/yoga.jpg",
+    calories: "200-300 cal",
   },
   {
     id: "2",
     title: "Lean and Sweaty",
-    image:
-      "public/shadow.jpg",
+    image: "public/shadow.jpg",
+    calories: "300-400 cal",
   },
   {
     id: "3",
     title: "Strength Surge",
-    image:
-      "public/dance.jpg",
+    image: "public/dance.jpg",
+    calories: "400-500 cal",
   },
   {
     id: "4",
     title: "Core Crusher",
-    image:
-      "public/sit.jpg",
+    image: "public/sit.jpg",
+    calories: "250-350 cal",
   },
   {
     id: "5",
     title: "HIIT It Hard",
-    image:
-      "public/hit.jpg",
+    image: "public/hit.jpg",
+    calories: "450-600 cal",
   },
   {
     id: "6",
     title: "Strength and Stability",
-    image:
-      "public/balance.jpg",
+    image: "public/balance.jpg",
+    calories: "150-250 cal",
   },
 ];
 
@@ -131,8 +131,12 @@ const Index = () => {
               {workoutImages.map((workout) => (
                 <div
                   key={workout.id}
-                  className="text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                  className="relative text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
                 >
+                  {/* Calories Badge */}
+                  <div className="absolute top-2 left-2 bg-[#8d8bd3] text-white text-xs font-bold px-2 py-1 rounded">
+                    {workout.calories}
+                  </div>
                   <img
                     src={workout.image}
                     alt={workout.title}
