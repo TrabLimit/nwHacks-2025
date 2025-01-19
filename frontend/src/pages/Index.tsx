@@ -49,21 +49,47 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6]">
       <Navigation />
-      <main className="container mx-auto pt-24 page-transition">
-      <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
-  <span className="font-bold text-[#ff5722]">H</span>ip 
-  <span className="font-bold text-[#ff5722]"> I</span>nteractive 
-  <span className="font-bold text-[#ff5722]"> P</span>hysical 
-  <span className="font-bold text-[#ff5722]"> T</span>herapy
-</h1>
 
+      {/* Hero Section */}
+      <header className="relative bg-blue-100 py-16">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center lg:items-start">
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+            <img
+              src="public/hip2.jpg"
+              alt="Tailored Suit"
+              className="rounded-lg shadow-lg max-w-full"
+            />
+          </div>
+          {/* Text Section */}
+          <div className="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12 text-center lg:text-left">
+            <h2 className="text-4xl font-bold text-[#5a3d31] mb-4">
+              The Tailor Is In
+            </h2>
+            <p className="text-lg text-gray-700 mb-6">
+              The ultimate custom menswear experience is now open in <strong>Chinook Centre</strong>.
+              Visit us by April 30 to be entered in a draw for a perfectly tailored wardrobe.
+            </p>
+            <button className="bg-[#ff5722] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#e64a19] transition">
+              Book an Appointment
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="container mx-auto pt-12">
+        {/* Title Section */}
+        <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
+          <span className="font-bold text-[#ff5722]">H</span>ip{" "}
+          <span className="font-bold text-[#ff5722]">I</span>nteractive{" "}
+          <span className="font-bold text-[#ff5722]">P</span>hysical{" "}
+          <span className="font-bold text-[#ff5722]">T</span>herapy
+        </h1>
 
         <div className="space-y-16">
           {/* Workout Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31] flex items-center justify-center gap-2">
-              <span>Workout Selection</span> <span className="text-2xl text-[#5a3d31]"></span>
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">Workout Selection</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {workoutImages.map((workout) => (
                 <div
@@ -75,9 +101,7 @@ const Index = () => {
                     alt={workout.title}
                     className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
-                  <p className="mt-4 text-lg font-semibold text-gray-700">
-                    {workout.title}
-                  </p>
+                  <p className="mt-4 text-lg font-semibold text-gray-700">{workout.title}</p>
                 </div>
               ))}
             </div>
@@ -85,9 +109,7 @@ const Index = () => {
 
           {/* Exercise Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31] flex items-center justify-center gap-2">
-              <span>Exercise Selection</span> <span className="text-2xl"></span>
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">Exercise Selection</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {exerciseImages.map((exercise) => (
                 <div
@@ -99,9 +121,7 @@ const Index = () => {
                     alt={exercise.title}
                     className="w-full h-48 object-cover rounded-xl border border-gray-300"
                   />
-                  <p className="mt-4 text-lg font-semibold text-gray-700">
-                    {exercise.title}
-                  </p>
+                  <p className="mt-4 text-lg font-semibold text-gray-700">{exercise.title}</p>
                 </div>
               ))}
             </div>
@@ -109,9 +129,7 @@ const Index = () => {
 
           {/* Song Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31] flex items-center justify-center gap-2">
-              <span>Song Selection</span> <span className="text-2xl"></span>
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">Song Selection</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
               {songSelection.map((song) => (
                 <div
