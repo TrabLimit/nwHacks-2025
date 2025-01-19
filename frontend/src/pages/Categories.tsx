@@ -4,23 +4,23 @@ import { WorkoutCard } from "@/components/WorkoutCard";
 const selectedItems = {
   workout: {
     id: "4",
-    title: "Upper Body Power",
+    title: "Core Crusher",
     description: "Build upper body strength with this comprehensive routine.",
     duration: "40 min",
     level: "Intermediate",
-    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000",
+    image: "public/sit.jpg",
   },
   exercise: {
     id: "1",
-    title: "Push-Ups",
+    title: "Plank",
     description: "Classic upper body exercise for strength and endurance.",
     duration: "5 min",
     level: "Beginner",
-    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000",
+    image: "public/plank.jpg",
   },
   song: {
     id: "6",
-    title: "Eye of the Tiger",
+    title: "Brat",
     description: "A motivational classic to keep you going!",
     duration: "4 min",
     level: "Music",
