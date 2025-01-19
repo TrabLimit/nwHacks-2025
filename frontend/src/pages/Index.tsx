@@ -78,33 +78,33 @@ const songSelection = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6]">
+    <div className="min-h-screen bg-gradient-to-r from-[#e0e6f8] to-[#cbd4f4]">
       <Navigation />
 
       {/* Hero Section */}
-      <header className="relative bg-blue-100 py-20">
+      <header className="relative bg-[#f5f7fb] py-20 shadow-md">
         <div className="container mx-auto flex flex-col lg:flex-row items-center text-center lg:text-left">
           {/* Image Section */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <img
               src="public/hip2.jpg"
               alt="Hip Logo"
-              className="rounded-lg shadow-2xl max-w-full lg:max-w-lg"
+              className="rounded-lg shadow-lg max-w-full lg:max-w-lg"
             />
           </div>
           {/* Text Section */}
           <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-12">
-            <h1 className="text-5xl font-extrabold text-[#5a3d31] leading-tight mb-6">
+            <h1 className="text-5xl font-extrabold text-[#5e5b99] leading-tight mb-6">
               Say Hi to PT
             </h1>
-            <p className="text-xl text-gray-700 leading-relaxed mb-8">
+            <p className="text-xl text-[#7b7ab8] leading-relaxed mb-8">
               Come try <strong>HIPT</strong>. A fusion of Just Dance and
               physical therapy, bringing energy and fun to your recovery
               journey.
             </p>
             <Link
               to="/pose-detector"
-              className="bg-[#ff5722] text-white px-8 py-4 text-lg rounded-lg font-semibold shadow-lg hover:bg-[#e64a19] transition-transform transform hover:scale-105 inline-block"
+              className="bg-[#8d8bd3] text-white px-8 py-4 text-lg rounded-lg font-semibold shadow-lg hover:bg-[#7c7ac1] transition-transform transform hover:scale-105 inline-block"
             >
               Try NOW
             </Link>
@@ -114,17 +114,17 @@ const Index = () => {
 
       <main className="container mx-auto pt-12">
         {/* Title Section */}
-        <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
-          <span className="font-bold text-[#ff5722]">H</span>ip{" "}
-          <span className="font-bold text-[#ff5722]">I</span>nteractive{" "}
-          <span className="font-bold text-[#ff5722]">P</span>hysical{" "}
-          <span className="font-bold text-[#ff5722]">T</span>herapy
+        <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5e5b99]">
+          <span className="font-bold text-[#8d8bd3]">H</span>ip{" "}
+          <span className="font-bold text-[#8d8bd3]">I</span>nteractive{" "}
+          <span className="font-bold text-[#8d8bd3]">P</span>hysical{" "}
+          <span className="font-bold text-[#8d8bd3]">T</span>herapy
         </h1>
 
         <div className="space-y-16">
           {/* Workout Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5e5b99]">
               Workout Selection
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -136,9 +136,9 @@ const Index = () => {
                   <img
                     src={workout.image}
                     alt={workout.title}
-                    className="w-full h-48 object-cover rounded-xl border border-gray-300"
+                    className="w-full h-48 object-cover rounded-xl border border-[#cbd4f4]"
                   />
-                  <p className="mt-4 text-lg font-semibold text-gray-700">
+                  <p className="mt-4 text-lg font-semibold text-[#5e5b99]">
                     {workout.title}
                   </p>
                 </div>
@@ -148,7 +148,7 @@ const Index = () => {
 
           {/* Exercise Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5e5b99]">
               Exercise Selection
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -160,9 +160,9 @@ const Index = () => {
                   <img
                     src={exercise.image}
                     alt={exercise.title}
-                    className="w-full h-48 object-cover rounded-xl border border-gray-300"
+                    className="w-full h-48 object-cover rounded-xl border border-[#cbd4f4]"
                   />
-                  <p className="mt-4 text-lg font-semibold text-gray-700">
+                  <p className="mt-4 text-lg font-semibold text-[#5e5b99]">
                     {exercise.title}
                   </p>
                 </div>
@@ -172,7 +172,7 @@ const Index = () => {
 
           {/* Song Selection */}
           <section>
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5a3d31]">
+            <h2 className="text-3xl font-bold text-center mb-8 text-[#5e5b99]">
               Song Selection
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
@@ -186,10 +186,10 @@ const Index = () => {
                     alt={`${song.artist} - ${song.song}`}
                     className="w-full h-36 object-cover rounded-lg mb-4"
                   />
-                  <p className="font-bold text-lg text-gray-800">
+                  <p className="font-bold text-lg text-[#5e5b99]">
                     {song.artist}
                   </p>
-                  <p className="text-sm text-gray-600">{song.song}</p>
+                  <p className="text-sm text-[#7b7ab8]">{song.song}</p>
                 </div>
               ))}
             </div>
