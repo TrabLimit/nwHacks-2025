@@ -10,7 +10,6 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
   let animationFrameId: number;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isWorkoutActive, setIsWorkoutActive] = useState(false);
   const [repCount, setRepCount] = useState(0);
   const [lastUpdateTime, setLastUpdateTime] = useState<number>(0);
   let activePoseDesired: boolean = true;
@@ -51,51 +50,53 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const poses = await detector.estimatePoses(video);
+    const poses = await detector.estimatePoses(video).catch((error) => {});
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    poses.forEach((pose) => {
-      drawKeypoints(ctx, pose.keypoints);
-      drawSkeleton(ctx, pose.keypoints);
-
-      const updateRepCount = (poseName: string) => {
-        const currentTime = Date.now();
-        // 0.5 second buffer time between valid reps, to prevent false positives for detection of the neutral pose
-        if (currentTime - lastUpdateTime < 500) return;
-
-        if (desiredExercises.includes(poseName) || desiredExercises === undefined) {
-          setRepCount((prevCount) => prevCount + 1);
-          setLastUpdateTime(currentTime);
-          activePoseDesired = false;
+    if (poses) {
+      poses.forEach((pose) => {
+        drawKeypoints(ctx, pose.keypoints);
+        drawSkeleton(ctx, pose.keypoints);
+  
+        const updateRepCount = (poseName: string) => {
+          const currentTime = Date.now();
+          // 0.5 second buffer time between valid reps, to prevent false positives for detection of the neutral pose
+          if (currentTime - lastUpdateTime < 500) return;
+  
+          if (desiredExercises.includes(poseName) || desiredExercises === undefined) {
+            setRepCount((prevCount) => prevCount + 1);
+            setLastUpdateTime(currentTime);
+            activePoseDesired = false;
+          }
+        };
+  
+        if (activePoseDesired && isTPose(pose.keypoints)) {
+          updateRepCount("T-pose");
+          console.log("T-pose detected!");
         }
-      };
-
-      if (activePoseDesired && isTPose(pose.keypoints)) {
-        updateRepCount("T-pose");
-        console.log("T-pose detected!");
-      }
-
-      if (activePoseDesired && isSquatPose(pose.keypoints)) {
-        updateRepCount("Squat pose");
-        console.log("Squat pose detected!");
-      }
-
-      if (activePoseDesired && isLungePose(pose.keypoints)) {
-        updateRepCount("Lunge pose");
-        console.log("Lunge pose detected!");
-      }
-
-      if (activePoseDesired && isRaisedLegPose(pose.keypoints)) {
-        updateRepCount("Raised leg pose");
-        console.log("Raised leg pose detected!");
-      }
-
-      if (!activePoseDesired && isNeutralPose(pose.keypoints)) {
-        activePoseDesired = true;
-        console.log("Neutral pose detected!");
-      }
-    });
+  
+        if (activePoseDesired && isSquatPose(pose.keypoints)) {
+          updateRepCount("Squat pose");
+          console.log("Squat pose detected!");
+        }
+  
+        if (activePoseDesired && isLungePose(pose.keypoints)) {
+          updateRepCount("Lunge pose");
+          console.log("Lunge pose detected!");
+        }
+  
+        if (activePoseDesired && isRaisedLegPose(pose.keypoints)) {
+          updateRepCount("Raised leg pose");
+          console.log("Raised leg pose detected!");
+        }
+  
+        if (!activePoseDesired && isNeutralPose(pose.keypoints)) {
+          activePoseDesired = true;
+          console.log("Neutral pose detected!");
+        }
+      });
+    }
     animationFrameId = requestAnimationFrame(detectPose);
   };
 
@@ -229,7 +230,6 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
   };
 
   useEffect(() => {
-    initPoseDetection();
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -241,7 +241,33 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
     };
   }, []);
 
+  const startWorkout = async () => {
+    setIsLoading(true);
 
+    // Initialize or resume the camera and pose detector
+    if (videoRef.current) {
+      videoRef.current.play();
+    } else {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      videoRef.current.srcObject = stream;
+    }
+    await initPoseDetection();
+
+    setIsLoading(false);
+    await detectPose();
+  };
+
+  const stopWorkout = () => {
+    // Cancel the animation frame
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+
+    // Pause the video
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }    
+  };
 
   return (
     <div className="relative w-full max-w-2xl mx-auto">
@@ -262,16 +288,14 @@ const PoseDetection = ({ desiredExercises }: { desiredExercises?: string[] }) =>
           <div className="text-3xl font-bold text-primary">{repCount}</div>
           <div className="mt-4 flex justify-center space-x-4">
             <button
-              onClick={() => setIsWorkoutActive(true)}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600"
-              disabled={isWorkoutActive}
+              onClick={() => startWorkout()}
+              className="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 z-10"
             >
               Start Workout
             </button>
             <button
-              onClick={() => setIsWorkoutActive(false)}
-              className="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600"
-              disabled={!isWorkoutActive}
+              onClick={() => stopWorkout()}
+              className="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 z-10"
             >
               Stop Workout
             </button>
