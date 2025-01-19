@@ -14,20 +14,13 @@ const userSchema = new mongoose.Schema({
 });
 
 // =============== WORKOUT ===============
-// Schema for a workout pose at a specific time
-const poseSchema = new mongoose.Schema({
-    _id: mongoose.Types.UUID,
-    poseName: { type: String, required: true },
-    poseTime: { type: Number, required: true },     // Time in seconds since start of music
-});
-
 // Schema for a workout that a user will complete
 const workoutSchema = new mongoose.Schema({
     _id: mongoose.Types.UUID,
     name: { type: String, required: true },
     description: { type: String, required: true },
     muscleGroups: [{ type: String }],
-    exercises: [{ type: poseSchema }],
+    exercises: [{ type: String }],
     songURL: { type: String },
 });
 

@@ -36,7 +36,7 @@ const PoseDetector = () => {
             className="mx-auto bg-transparent rounded-lg overflow-hidden"
             style={{ maxWidth: "640px" }}
           >
-            <PoseDetection />
+            <PoseDetection desiredExercises={["T-pose", "Squat pose"]}/>
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-xl mx-auto">
