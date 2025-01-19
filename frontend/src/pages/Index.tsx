@@ -4,12 +4,12 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const exerciseImages = [
-  { id: "1", title: "Rear Lunges", image: "public/lunge.jpg" },
-  { id: "2", title: "Butt Kickers", image: "public/butt.jpg" },
-  { id: "3", title: "Criss Cross", image: "public/cross.jpg" },
-  { id: "4", title: "Mountain Climbers", image: "public/mountain.jpg" },
-  { id: "5", title: "Pendulum Crosses", image: "public/pendulum.webp" },
-  { id: "6", title: "Plank", image: "public/plank.jpg" },
+  { id: "1", title: "Rear Lunges", image: "./lunge.jpg" },
+  { id: "2", title: "Butt Kickers", image: "./butt.jpg" },
+  { id: "3", title: "Criss Cross", image: "./cross.jpg" },
+  { id: "4", title: "Mountain Climbers", image: "./mountain.jpg" },
+  { id: "5", title: "Pendulum Crosses", image: "./pendulum.webp" },
+  { id: "6", title: "Plank", image: "./plank.jpg" },
 ];
 
 const songSelection = [
