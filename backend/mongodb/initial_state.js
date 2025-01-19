@@ -7,7 +7,7 @@ const initialState = `[
         "exercises": ["Squats"],
         "difficulty": "Intermediate",
         "equipment": ["Barbell"],
-        "music": "Rock"
+        "songURL": "https://www.youtube.com/watch?v=MtN1YnoL46Q&pp=ygUJZHVjayBzb25n"
     }
 ]`
 

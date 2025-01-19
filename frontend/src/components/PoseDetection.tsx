@@ -37,6 +37,7 @@ const PoseDetection = () => {
         });
       }
     };
+
     const detectPose = async () => {
       console.log('hey');
       if (!detector || !videoRef.current || !canvasRef.current) return;
@@ -56,21 +57,23 @@ const PoseDetection = () => {
         drawSkeleton(ctx, pose.keypoints);
 
         if (isTPose(pose.keypoints)) {
-            console.log('T-pose detected!');
-            setRepCount((prevCount) => prevCount + 1);
-          }
+          console.log('T-pose detected!');
+          setRepCount((prevCount) => prevCount + 1);
+        }
 
         if (isSquatPose(pose.keypoints)) {
-            console.log('Squat pose detected!');
-            setRepCount((prevCount) => prevCount + 1);
-          }
+          console.log('Squat pose detected!');
+          setRepCount((prevCount) => prevCount + 1);
+        }
+        
         if (isDabbingPose(pose.keypoints)) {
-            console.log('Dabbing pose detected!');
-            setRepCount((prevCount) => prevCount + 1);
-          }
+          console.log('Dabbing pose detected!');
+          setRepCount((prevCount) => prevCount + 1);
+        }
       });
       animationFrameId = requestAnimationFrame(detectPose);
     };
+
     const drawKeypoints = (ctx: CanvasRenderingContext2D, keypoints: poseDetection.Keypoint[]) => {
       keypoints.forEach((keypoint) => {
         if (keypoint.score && keypoint.score > 0.3) {
@@ -82,6 +85,7 @@ const PoseDetection = () => {
         }
       });
     };
+
     const drawSkeleton = (ctx: CanvasRenderingContext2D, keypoints: poseDetection.Keypoint[]) => {
       const connections = [
         ['nose', 'left_eye'], ['nose', 'right_eye'],
@@ -109,53 +113,53 @@ const PoseDetection = () => {
     };
 
     const isTPose = (keypoints: poseDetection.Keypoint[]) => {
-        const leftShoulder = keypoints.find((kp) => kp.name === 'left_shoulder');
-        const rightShoulder = keypoints.find((kp) => kp.name === 'right_shoulder');
-        const leftWrist = keypoints.find((kp) => kp.name === 'left_wrist');
-        const rightWrist = keypoints.find((kp) => kp.name === 'right_wrist');
-  
-        if (leftShoulder && rightShoulder && leftWrist && rightWrist) {
-          const shoulderDistance = Math.abs(leftShoulder.x - rightShoulder.x);
-          const leftArmHorizontal = Math.abs(leftShoulder.y - leftWrist.y) < shoulderDistance * 0.2;
-          const rightArmHorizontal = Math.abs(rightShoulder.y - rightWrist.y) < shoulderDistance * 0.2;
-  
-          return leftArmHorizontal && rightArmHorizontal;
-        }
-        return false;
-      };
+      const leftShoulder = keypoints.find((kp) => kp.name === 'left_shoulder');
+      const rightShoulder = keypoints.find((kp) => kp.name === 'right_shoulder');
+      const leftWrist = keypoints.find((kp) => kp.name === 'left_wrist');
+      const rightWrist = keypoints.find((kp) => kp.name === 'right_wrist');
+
+      if (leftShoulder && rightShoulder && leftWrist && rightWrist) {
+        const shoulderDistance = Math.abs(leftShoulder.x - rightShoulder.x);
+        const leftArmHorizontal = Math.abs(leftShoulder.y - leftWrist.y) < shoulderDistance * 0.2;
+        const rightArmHorizontal = Math.abs(rightShoulder.y - rightWrist.y) < shoulderDistance * 0.2;
+
+        return leftArmHorizontal && rightArmHorizontal;
+      }
+      return false;
+    };
 
     const isSquatPose = (keypoints: poseDetection.Keypoint[]) => {
-    const leftHip = keypoints.find((kp) => kp.name === 'left_hip');
-    const rightHip = keypoints.find((kp) => kp.name === 'right_hip');
-    const leftKnee = keypoints.find((kp) => kp.name === 'left_knee');
-    const rightKnee = keypoints.find((kp) => kp.name === 'right_knee');
+      const leftHip = keypoints.find((kp) => kp.name === 'left_hip');
+      const rightHip = keypoints.find((kp) => kp.name === 'right_hip');
+      const leftKnee = keypoints.find((kp) => kp.name === 'left_knee');
+      const rightKnee = keypoints.find((kp) => kp.name === 'right_knee');
 
-    if (leftHip && rightHip && leftKnee && rightKnee) {
+      if (leftHip && rightHip && leftKnee && rightKnee) {
         const hipsLowerThanKnees = leftHip.y > leftKnee.y && rightHip.y > rightKnee.y;
         const kneesBent = Math.abs(leftHip.x - leftKnee.x) < Math.abs(leftHip.y - leftKnee.y) &&
-                        Math.abs(rightHip.x - rightKnee.x) < Math.abs(rightHip.y - rightKnee.y);
+          Math.abs(rightHip.x - rightKnee.x) < Math.abs(rightHip.y - rightKnee.y);
 
         return hipsLowerThanKnees && kneesBent;
-    }
-    return false;
+      }
+      return false;
     };
 
     const isDabbingPose = (keypoints: poseDetection.Keypoint[]) => {
-        const leftShoulder = keypoints.find((kp) => kp.name === 'left_shoulder');
-        const rightShoulder = keypoints.find((kp) => kp.name === 'right_shoulder');
-        const leftElbow = keypoints.find((kp) => kp.name === 'left_elbow');
-        const rightElbow = keypoints.find((kp) => kp.name === 'right_elbow');
-        const leftWrist = keypoints.find((kp) => kp.name === 'left_wrist');
-        const rightWrist = keypoints.find((kp) => kp.name === 'right_wrist');
-  
-        if (leftShoulder && rightShoulder && leftElbow && rightElbow && leftWrist && rightWrist) {
-          const leftArmUp = leftWrist.y < leftShoulder.y && leftElbow.y < leftShoulder.y;
-          const rightArmBent = rightWrist.y > rightElbow.y && rightElbow.y > rightShoulder.y;
-  
-          return leftArmUp && rightArmBent;
-        }
-        return false;
-      };
+      const leftShoulder = keypoints.find((kp) => kp.name === 'left_shoulder');
+      const rightShoulder = keypoints.find((kp) => kp.name === 'right_shoulder');
+      const leftElbow = keypoints.find((kp) => kp.name === 'left_elbow');
+      const rightElbow = keypoints.find((kp) => kp.name === 'right_elbow');
+      const leftWrist = keypoints.find((kp) => kp.name === 'left_wrist');
+      const rightWrist = keypoints.find((kp) => kp.name === 'right_wrist');
+
+      if (leftShoulder && rightShoulder && leftElbow && rightElbow && leftWrist && rightWrist) {
+        const leftArmUp = leftWrist.y < leftShoulder.y && leftElbow.y < leftShoulder.y;
+        const rightArmBent = rightWrist.y > rightElbow.y && rightElbow.y > rightShoulder.y;
+
+        return leftArmUp && rightArmBent;
+      }
+      return false;
+    };
 
     initPoseDetection();
     return () => {
@@ -168,6 +172,7 @@ const PoseDetection = () => {
       }
     };
   }, []);
+
   return (
     <div className="relative w-full max-w-2xl mx-auto">
       {isLoading && (
