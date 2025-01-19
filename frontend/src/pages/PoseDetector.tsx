@@ -26,19 +26,22 @@ const PoseDetector = () => {
         Timer: {timeLeft}s
       </div>
       */}
-      
+
       <main className="container mx-auto pt-36 page-transition space-y-12">
         <div className="space-y-6 text-center">
           <h1 className="text-4xl font-extrabold text-[#5a3d31] tracking-tighter">
             Pose Detection
           </h1>
-          <div className="mx-auto bg-transparent rounded-lg overflow-hidden" style={{ maxWidth: '640px' }}>
-                <PoseDetection />
-            </div>
+          <div
+            className="mx-auto bg-transparent rounded-lg overflow-hidden"
+            style={{ maxWidth: "640px" }}
+          >
+            <PoseDetection />
+          </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-xl mx-auto">
           <h2 className="text-3xl font-bold text-[#5a3d31] mb-4">
-            Pose Detection 
+            Pose Detection
           </h2>
           <p className="text-lg text-[#5a3d31] mb-4">
             Make sure your browser has access to your camera!
