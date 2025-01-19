@@ -8,8 +8,11 @@ const workoutModel = require("../mongodb/schemas").workoutModel;
 router.get("/users/:uuid", async (req, res) => {
     try {
         // Getting and responding with user data
-        const users = await userModel.find({_id: req.params.uuid});
-        res.send(users);
+        const user = await userModel.find({_id: req.params.uuid});
+        if (user == null) {
+            res.status(404).send("User not found");
+        }
+        res.send(user);
     } catch (error) {
         res.status(500).send(error);
     }
@@ -38,6 +41,11 @@ router.post("/users", async (req, res) => {
 // PUT endpoint to update a user's data
 router.put("/users/:uuid", async (req, res) => {
     try {
+        // Checking if the user exists
+        const user = await userModel.find({_id: req.params.uuid});
+        if (user == null) {
+            res.status(404).send("User not found");
+        }
         // Updating the user's data with the fields provided in the request body
         await userModel.updateOne({_id: req.params.uuid}, req.body);
     } catch (error) {
