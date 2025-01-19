@@ -43,6 +43,15 @@ const initialState = `[
         "exercises": ["T-pose"],
         "imageURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/540px-Da_Vinci_Vitruve_Luc_Viatour.jpg",
         "songURL": "https://www.youtube.com/watch?v=MtN1YnoL46Q&pp=ygUJZHVjayBzb25n"
+    },
+    {
+        "_id": "5402d009-fbe3-4e87-9048-ece7ef64a3c6",
+        "title": "All arm exercises",
+        "description": "The t-pose is an upper body exercise. It is a functional exercise that can help you in your daily activities and keep you strong.",
+        "muscleGroups": ["Deltoids", "Pectorals", "Triceps"],
+        "exercises": ["T-pose"],
+        "imageURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/540px-Da_Vinci_Vitruve_Luc_Viatour.jpg",
+        "songURL": "https://www.youtube.com/watch?v=MtN1YnoL46Q&pp=ygUJZHVjayBzb25n"
     }
 ]`
 

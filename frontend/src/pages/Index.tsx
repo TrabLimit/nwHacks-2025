@@ -18,6 +18,9 @@ const workoutImages = [
   },
   {
     image: "./dance.jpg",
+  },
+  {
+    image: "./dance.jpg",
   }
 ];
 
