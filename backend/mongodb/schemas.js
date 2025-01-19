@@ -28,8 +28,6 @@ const workoutSchema = new mongoose.Schema({
     description: { type: String, required: true },
     muscleGroups: [{ type: String }],
     exercises: [{ type: poseSchema }],
-    difficulty: { type: String, required: true },
-    equipment: [{ type: String }],
     songURL: { type: String },
 });
 

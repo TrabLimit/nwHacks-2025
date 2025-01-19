@@ -25,13 +25,13 @@ const Workout = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6] flex flex-col items-center relative">
       <Navigation />
-      <div className="absolute top-4 right-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
+      <div className="fixed top-4 right-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
         Score: 100
       </div>
-      <div className="absolute bottom-4 left-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
+      <div className="fixed bottom-4 left-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
         Points: 50
       </div>
-      <div className="absolute bottom-4 right-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
+      <div className="fixed bottom-4 right-6 bg-[#5a3d31] text-white px-4 py-2 rounded-full font-bold">
         Timer: {timeLeft}s
       </div>
       <main className="container mx-auto pt-36 page-transition space-y-12">

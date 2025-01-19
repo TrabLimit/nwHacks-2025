@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 
 const workoutImages = [
-  { id: "1", title: "Fat Burn", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
+  { id: "1", title: "Fat Burn", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
   { id: "2", title: "Lean and Sweaty", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
   { id: "3", title: "Strength Surge", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
   { id: "4", title: "Core Crusher", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
@@ -10,37 +10,37 @@ const workoutImages = [
 ];
 
 const exerciseImages = [
-  { id: "1", title: "Rear Lunges", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
-  { id: "2", title: "Butt Kickers", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
-  { id: "3", title: "Criss Cross", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
-  { id: "4", title: "Mountain Climbers", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
-  { id: "5", title: "Pendulum Crosses", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
-  { id: "6", title: "Plank", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1000" },
+  { id: "1", title: "Rear Lunges", image: "public/lunge.jpg" },
+  { id: "2", title: "Butt Kickers", image: "public/butt.jpg" },
+  { id: "3", title: "Criss Cross", image: "public/cross.jpg" },
+  { id: "4", title: "Mountain Climbers", image: "public/mountain.jpg" },
+  { id: "5", title: "Pendulum Crosses", image: "public/pendulum.webp" },
+  { id: "6", title: "Plank", image: "public/plank.jpg" },
 ];
 
 const songSelection = [
   {
     id: "1",
-    artist: "NF",
-    song: "Lie",
+    artist: "Charli XCX",
+    song: "Brat",
     image: "/public/brat.jpg",
   },
   {
     id: "2",
-    artist: "Artist",
-    song: "Song",
+    artist: "Post Malone",
+    song: "Beerbongs and Bentleys",
     image: "/public/post.jpg",
   },
   {
     id: "3",
-    artist: "Artist",
-    song: "Song",
+    artist: "Sabrina Carpenter",
+    song: "Short and Sweet",
     image: "/public/sabrina.jpg",
   },
   {
     id: "4",
-    artist: "Artist",
-    song: "Song",
+    artist: "Metro Boomin",
+    song: "Without Warning",
     image: "/public/metro.jpg",
   },
 ];
@@ -50,9 +50,14 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-r from-[#f0e2d0] to-[#dbc1a6]">
       <Navigation />
       <main className="container mx-auto pt-24 page-transition">
-        <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
-          Discover Your Fitness Journey
-        </h1>
+      <h1 className="text-5xl font-extrabold text-center mb-12 text-[#5a3d31]">
+  <span className="font-bold text-[#ff5722]">H</span>ip 
+  <span className="font-bold text-[#ff5722]"> I</span>nteractive 
+  <span className="font-bold text-[#ff5722]"> P</span>hysical 
+  <span className="font-bold text-[#ff5722]"> T</span>herapy
+</h1>
+
+
         <div className="space-y-16">
           {/* Workout Selection */}
           <section>
