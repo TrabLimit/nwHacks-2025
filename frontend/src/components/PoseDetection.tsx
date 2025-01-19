@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import { toast } from '@/components/ui/use-toast';
+
 const PoseDetection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -112,16 +113,16 @@ const PoseDetection = () => {
           </div>
         </div>
       )}
-      <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+      <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
         <video
           ref={videoRef}
           autoPlay
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full object-cover"
         />
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 h-full"
           width={640}
           height={480}
         />
