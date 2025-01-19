@@ -7,7 +7,7 @@ export const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="text-xl font-semibold">
-          Fitness
+          HIPT
         </Link>
         <div className="flex gap-6">
           <Link
