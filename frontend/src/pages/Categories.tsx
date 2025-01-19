@@ -8,7 +8,7 @@ const selectedItems = {
     description: "Build upper body strength with this comprehensive routine.",
     duration: "40 min",
     level: "Intermediate",
-    image: "public/sit.jpg",
+    image: "sit.jpg",
   },
   exercise: {
     id: "1",
@@ -16,7 +16,7 @@ const selectedItems = {
     description: "Classic upper body exercise for strength and endurance.",
     duration: "5 min",
     level: "Beginner",
-    image: "public/plank.jpg",
+    image: "plank.jpg",
   },
   song: {
     id: "6",
