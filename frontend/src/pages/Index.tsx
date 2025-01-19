@@ -1,52 +1,15 @@
+import { WorkoutContext } from "@/App";
 import { Navigation } from "@/components/Navigation";
-import { Link } from "react-router-dom";
-
-const workoutImages = [
-  {
-    id: "1",
-    title: "Fat Burn",
-    image: "public/yoga.jpg",
-    calories: "200-300 cal",
-  },
-  {
-    id: "2",
-    title: "Lean and Sweaty",
-    image: "public/shadow.jpg",
-    calories: "300-400 cal",
-  },
-  {
-    id: "3",
-    title: "Strength Surge",
-    image: "public/dance.jpg",
-    calories: "400-500 cal",
-  },
-  {
-    id: "4",
-    title: "Core Crusher",
-    image: "public/sit.jpg",
-    calories: "250-350 cal",
-  },
-  {
-    id: "5",
-    title: "HIIT It Hard",
-    image: "public/hit.jpg",
-    calories: "450-600 cal",
-  },
-  {
-    id: "6",
-    title: "Strength and Stability",
-    image: "public/balance.jpg",
-    calories: "150-250 cal",
-  },
-];
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const exerciseImages = [
-  { id: "1", title: "Rear Lunges", image: "public/lunge.jpg" },
-  { id: "2", title: "Butt Kickers", image: "public/butt.jpg" },
-  { id: "3", title: "Criss Cross", image: "public/cross.jpg" },
-  { id: "4", title: "Mountain Climbers", image: "public/mountain.jpg" },
-  { id: "5", title: "Pendulum Crosses", image: "public/pendulum.webp" },
-  { id: "6", title: "Plank", image: "public/plank.jpg" },
+  { id: "1", title: "Rear Lunges", image: "./lunge.jpg" },
+  { id: "2", title: "Butt Kickers", image: "./butt.jpg" },
+  { id: "3", title: "Criss Cross", image: "./cross.jpg" },
+  { id: "4", title: "Mountain Climbers", image: "./mountain.jpg" },
+  { id: "5", title: "Pendulum Crosses", image: "./pendulum.webp" },
+  { id: "6", title: "Plank", image: "./plank.jpg" },
 ];
 
 const songSelection = [
@@ -54,29 +17,32 @@ const songSelection = [
     id: "1",
     artist: "Charli XCX",
     song: "Brat",
-    image: "../public/brat.jpg",
+    image: "/brat.jpg",
   },
   {
     id: "2",
     artist: "Post Malone",
     song: "Beerbongs and Bentleys",
-    image: "/public/post.jpg",
+    image: "/post.jpg",
   },
   {
     id: "3",
     artist: "Sabrina Carpenter",
     song: "Short and Sweet",
-    image: "/public/sabrina.jpg",
+    image: "/sabrina.jpg",
   },
   {
     id: "4",
     artist: "Metro Boomin",
     song: "Without Warning",
-    image: "/public/metro.jpg",
+    image: "/metro.jpg",
   },
 ];
 
 const Index = () => {
+  const workouts = useContext(WorkoutContext);
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#e0e6f8] to-[#cbd4f4]">
       <Navigation />
@@ -128,17 +94,18 @@ const Index = () => {
               Workout Selection
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {workoutImages.map((workout) => (
+              {workouts.map((workout, index: number) => (
                 <div
-                  key={workout.id}
-                  className="relative text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                  key={index}
+                  className="text-center bg-white p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform"
+                  onClick={() => navigate("/pose-detector/" + index)}
                 >
                   {/* Calories Badge */}
                   <div className="absolute top-2 left-2 bg-[#8d8bd3] text-white text-xs font-bold px-2 py-1 rounded">
                     {workout.calories}
                   </div>
                   <img
-                    src={workout.image}
+                    src={workout.imageURL}
                     alt={workout.title}
                     className="w-full h-48 object-cover rounded-xl border border-[#cbd4f4]"
                   />

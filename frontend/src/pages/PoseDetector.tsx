@@ -1,9 +1,13 @@
 import { Navigation } from "@/components/Navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PoseDetection from "@/components/PoseDetection"; // Assuming PoseDetection is a component
+import { useParams } from "react-router-dom";
+import { WorkoutContext } from "@/App";
 
 const PoseDetector = () => {
   const [timeLeft, setTimeLeft] = useState(60);
+  const { id } = useParams();
+  const workouts = useContext(WorkoutContext);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,7 +28,7 @@ const PoseDetector = () => {
             className="mx-auto bg-transparent rounded-lg overflow-hidden"
             style={{ maxWidth: "640px" }}
           >
-            <PoseDetection />
+            <PoseDetection desiredExercises={id ? workouts[id]["exercises"] : ["T-pose", "Squat pose"]} />
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-xl mx-auto">
